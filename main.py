@@ -8,19 +8,19 @@ translator = Translator()
 DEFAULT_TARGET="fr"
 DEFAULT_SOURCE="en"
 
-async def translate_text(text, target_lang="fr", source_lang=DEFAULT_TARGET):
+async def translate_text(text, target_lang=DEFAULT_TARGET, source_lang=DEFAULT_SOURCE):
     """
     Asynchronously translates a string
     """
     try:
         # wait for the translation result
-        translated = await translator.translate(text, src=DEFAULT_TARGET ,dest=target_lang)
+        translated = await translator.translate(text, src=source_lang ,dest=target_lang)
         return translated.text
     except Exception as e:
         print(f"Failed to translate '{text}': {e}")
         return text  # Return original text in case of error
 
-async def recursive_translate(data, target_lang=DEFAULT_TARGET, source_lang=DEFAULT_TARGET):
+async def recursive_translate(data, target_lang=DEFAULT_TARGET, source_lang=DEFAULT_SOURCE):
     """
     Recursively goes through the JSON and translate all strings (strings, lists, dicts)
     """
