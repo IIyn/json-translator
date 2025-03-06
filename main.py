@@ -32,7 +32,7 @@ async def recursive_translate(data, target_lang=DEFAULT_TARGET, source_lang=DEFA
     elif isinstance(data, list):
         return [await recursive_translate(item, target_lang, source_lang) for item in data]
     elif isinstance(data, str):
-        return await translate_text(data, target_lang)
+        return await translate_text(data, target_lang, source_lang)
     else:
         return data
 
